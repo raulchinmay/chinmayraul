@@ -1,0 +1,361 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#050505;
+  --text:#f5f5f5;
+  --muted:#999;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:#050505;
+  color:white;
+  overflow-x:hidden;
+}
+
+.noise{
+  position:fixed;
+  inset:0;
+  background-image:url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity:0.03;
+  pointer-events:none;
+  z-index:9999;
+}
+
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  left:0;
+  z-index:1000;
+  backdrop-filter:blur(20px);
+  background:rgba(0,0,0,0.2);
+}
+
+.nav-inner{
+  max-width:1400px;
+  margin:auto;
+  padding:25px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:22px;
+  font-weight:800;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#bbb;
+}
+
+.hero{
+  height:100vh;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-bg{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  inset:0;
+  transform:scale(1.1);
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+  z-index:1;
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:1100px;
+  margin:auto;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:0 40px;
+}
+
+.hero-label{
+  color:#bbb;
+  letter-spacing:2px;
+  margin-bottom:20px;
+  text-transform:uppercase;
+}
+
+.hero-title{
+  font-size:clamp(60px,10vw,140px);
+  line-height:0.95;
+  max-width:1000px;
+  margin-bottom:30px;
+}
+
+.hero-description{
+  font-size:24px;
+  line-height:1.8;
+  max-width:800px;
+  color:#ddd;
+}
+
+.story-section,
+.manufacturing-section,
+.saas-section,
+.awards-section{
+  max-width:1400px;
+  margin:auto;
+  padding:140px 40px;
+}
+
+.section-heading{
+  color:#888;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  margin-bottom:40px;
+}
+
+.timeline-container{
+  display:flex;
+  flex-direction:column;
+  gap:120px;
+}
+
+.timeline-item{
+  display:grid;
+  grid-template-columns:150px 1fr;
+  gap:60px;
+}
+
+.timeline-number{
+  font-size:90px;
+  color:#1b1b1b;
+  font-weight:800;
+}
+
+.timeline-content h2{
+  font-size:58px;
+  margin-bottom:20px;
+}
+
+.timeline-content p{
+  font-size:22px;
+  line-height:1.9;
+  color:#ccc;
+  max-width:850px;
+}
+
+.image-break img{
+  width:100%;
+  height:100vh;
+  object-fit:cover;
+}
+
+.manufacturing-section{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+
+.left-panel img{
+  width:100%;
+  border-radius:30px;
+}
+
+.right-panel h2{
+  font-size:72px;
+  line-height:1.1;
+  margin-bottom:30px;
+}
+
+.right-panel p{
+  font-size:22px;
+  line-height:1.9;
+  color:#ccc;
+}
+
+.tag-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-top:40px;
+}
+
+.tag-row span{
+  padding:12px 20px;
+  border-radius:999px;
+  background:#121212;
+}
+
+.saas-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+.saas-card{
+  background:#0d0d0d;
+  border-radius:30px;
+  overflow:hidden;
+}
+
+.saas-card img{
+  width:100%;
+  height:450px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:40px;
+}
+
+.card-content h3{
+  font-size:40px;
+  margin-bottom:20px;
+}
+
+.card-content p{
+  color:#ccc;
+  line-height:1.8;
+  font-size:18px;
+}
+
+.adventure-section{
+  position:relative;
+  height:100vh;
+  overflow:hidden;
+}
+
+.adventure-bg{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  position:absolute;
+  inset:0;
+}
+
+.adventure-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+}
+
+.adventure-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  max-width:1000px;
+  margin:auto;
+  padding:0 40px;
+}
+
+.adventure-content h2{
+  font-size:90px;
+  margin-bottom:30px;
+  line-height:1;
+}
+
+.adventure-content p{
+  font-size:24px;
+  line-height:1.9;
+  color:#ddd;
+}
+
+.awards-grid{
+  display:grid;
+  grid-template-columns:1fr;
+}
+
+.award-card img{
+  width:100%;
+  border-radius:30px;
+  margin-bottom:30px;
+}
+
+.award-card h3{
+  font-size:48px;
+  margin-bottom:20px;
+}
+
+.award-card p{
+  font-size:22px;
+  line-height:1.9;
+  color:#ccc;
+}
+
+footer{
+  padding:160px 40px;
+  text-align:center;
+}
+
+footer h2{
+  font-size:90px;
+  margin-bottom:30px;
+}
+
+footer p{
+  color:#aaa;
+  margin-bottom:40px;
+}
+
+.footer-links{
+  display:flex;
+  justify-content:center;
+  gap:30px;
+}
+
+.footer-links a{
+  color:white;
+  text-decoration:none;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(80px);
+}
+
+@media(max-width:900px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .timeline-item,
+  .manufacturing-section,
+  .saas-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-title,
+  .adventure-content h2,
+  .right-panel h2,
+  .timeline-content h2,
+  footer h2{
+    font-size:48px;
+  }
+
+}
