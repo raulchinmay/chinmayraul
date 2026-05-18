@@ -1,160 +1,685 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chinmay Raul</title>
-
-  <link rel="stylesheet" href="style.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #050505;
+      --card: rgba(255,255,255,0.04);
+      --text: #f5f5f5;
+      --muted: #8b8b8b;
+      --border: rgba(255,255,255,0.08);
+      --accent: #5da8ff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(93,168,255,0.15), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.06), transparent 20%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+      opacity: 0.04;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    nav {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: rgba(5,5,5,0.5);
+    }
+
+    .nav-inner {
+      max-width: 1300px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 40px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #cfcfcf;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 140px 40px 80px;
+    }
+
+    .hero-inner {
+      max-width: 1300px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(60px, 10vw, 120px);
+      line-height: 0.95;
+      margin-bottom: 30px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      color: #c8c8c8;
+      font-size: 20px;
+      line-height: 1.9;
+      max-width: 700px;
+    }
+
+    .hero-buttons {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 16px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: 0.3s ease;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: white;
+      color: black;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero-image {
+      position: relative;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.5);
+    }
+
+    .floating-card {
+      position: absolute;
+      right: -40px;
+      bottom: 40px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      padding: 24px;
+      border-radius: 24px;
+      width: 260px;
+    }
+
+    .floating-card h3 {
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .floating-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #c9c9c9;
+    }
+
+    section {
+      max-width: 1300px;
+      margin: auto;
+      padding: 120px 40px;
+    }
+
+    .section-label {
+      color: var(--muted);
+      letter-spacing: 2px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.1;
+      margin-bottom: 60px;
+      max-width: 900px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 40px;
+      transition: 0.4s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(93,168,255,0.4);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .card h3 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .card p {
+      color: #c5c5c5;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      font-size: 13px;
+      color: #d8d8d8;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .timeline-year {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .timeline-content h3 {
+      font-size: 32px;
+      margin-bottom: 14px;
+    }
+
+    .timeline-content p {
+      color: #c7c7c7;
+      line-height: 1.9;
+      max-width: 800px;
+    }
+
+    .writing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+    }
+
+    .writing-card {
+      padding: 40px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.4s ease;
+    }
+
+    .writing-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .writing-card h3 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .writing-card p {
+      color: #c8c8c8;
+      line-height: 1.9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 100px 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    footer h2 {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+
+    footer p {
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    @media(max-width: 1000px) {
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-card {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+    }
+
+  </style>
 </head>
-
 <body>
 
-  <header class="hero">
+  <div class="noise"></div>
 
-    <nav class="navbar">
+  <nav>
+    <div class="nav-inner">
       <div class="logo">CR</div>
 
       <div class="nav-links">
-        <a href="#">About</a>
-        <a href="#">Experience</a>
-        <a href="#">Writing</a>
-        <a href="#">Contact</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <div class="hero-content">
+  <section class="hero">
 
-      <div class="hero-text">
+    <div class="hero-inner">
 
-        <p class="intro">
-          Enterprise Customer Success • ERP • Manufacturing • AI Workflows
-        </p>
+      <div class="hero-content fade-up">
+
+        <div class="eyebrow">
+          ERP • Manufacturing • Customer Success • AI Workflows
+        </div>
 
         <h1>
           Chinmay Raul
         </h1>
 
-        <p class="description">
-          I started on factory floors - 5S boards, kaizen projects, process studies,
-          production bottlenecks.
-
-          Today I work across ERP modernization, manufacturing operations,
-          enterprise customer success, and AI workflow transformation.
+        <p>
+          I started on factory floors - shop lines, kaizen boards, process studies, production bottlenecks.
+          Today I work across enterprise ERP transformation, manufacturing operations, and AI workflow thinking.
         </p>
 
-        <div class="buttons">
-          <a href="https://www.linkedin.com/in/chinmayraul/" target="_blank" class="primary-btn">
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="https://www.linkedin.com/in/chinmayraul/" target="_blank">
             LinkedIn
           </a>
 
-          <a href="#" class="secondary-btn">
-            Resume
+          <a class="btn btn-secondary" href="mailto:raulchinmay@gmail.com">
+            Contact
           </a>
         </div>
 
       </div>
 
-      <div class="hero-image">
+      <div class="hero-image fade-up">
+
         <img src="profile.jpg" alt="Chinmay Raul">
+
+        <div class="floating-card">
+          <h3>Current Focus</h3>
+
+          <p>
+            ERP modernization, enterprise customer recovery, manufacturing workflows,
+            operational adoption, and vertical AI systems.
+          </p>
+        </div>
+
       </div>
 
     </div>
 
-  </header>
+  </section>
 
-  <section class="section">
+  <section id="about">
 
-    <p class="section-tag">
-      EXPERIENCE
-    </p>
+    <div class="section-label">ABOUT</div>
 
-    <h2>
-      From manufacturing plants to enterprise SaaS.
+    <h2 class="section-title fade-up">
+      Factory floor thinking carried into enterprise software.
     </h2>
 
-    <div class="card">
+    <div class="grid">
 
-      <h3>Senior Customer Success Manager - QAD</h3>
+      <div class="card fade-up">
+        <h3>Manufacturing</h3>
 
-      <p>
-        Managing global enterprise ERP accounts across manufacturing,
-        supply chain, procurement, finance, and operations.
-      </p>
+        <p>
+          Started career working with process studies, Lean, 5S, Kaizen,
+          production bottlenecks, and industrial operations.
+        </p>
 
-      <ul>
-        <li>~$10M ARR portfolio</li>
-        <li>ERP modernization programs</li>
-        <li>Executive stakeholder management</li>
-        <li>Enterprise account recovery</li>
-      </ul>
+        <div class="pill-row">
+          <div class="pill">Lean</div>
+          <div class="pill">5S</div>
+          <div class="pill">Kaizen</div>
+          <div class="pill">Operations</div>
+        </div>
+      </div>
 
-    </div>
+      <div class="card fade-up">
+        <h3>Enterprise SaaS</h3>
 
-    <div class="card">
+        <p>
+          Worked across ERP adoption, customer success, stakeholder alignment,
+          implementation governance, and enterprise recovery programs.
+        </p>
 
-      <h3>Team Lead Customer Success - GoComet</h3>
+        <div class="pill-row">
+          <div class="pill">ERP</div>
+          <div class="pill">Customer Success</div>
+          <div class="pill">SaaS</div>
+          <div class="pill">Transformation</div>
+        </div>
+      </div>
 
-      <p>
-        Worked with enterprise logistics and manufacturing customers
-        across APAC, MEA, and ANZ regions.
-      </p>
+      <div class="card fade-up">
+        <h3>AI Workflows</h3>
 
-      <ul>
-        <li>Customer lifecycle management</li>
-        <li>Digital transformation</li>
-        <li>Supply chain workflows</li>
-        <li>Process optimization</li>
-      </ul>
+        <p>
+          Interested in where AI fits operationally - especially workflow automation,
+          procurement operations, supply chain coordination, and enterprise execution.
+        </p>
+
+        <div class="pill-row">
+          <div class="pill">AI Agents</div>
+          <div class="pill">Procurement</div>
+          <div class="pill">Supply Chain</div>
+          <div class="pill">Workflow Systems</div>
+        </div>
+      </div>
 
     </div>
 
   </section>
 
-  <section class="section">
+  <section id="experience">
 
-    <p class="section-tag">
-      WRITING
-    </p>
+    <div class="section-label">EXPERIENCE</div>
 
-    <h2>
-      Thoughts around ERP, operations, and AI.
+    <h2 class="section-title fade-up">
+      From manufacturing plants to global enterprise ERP accounts.
     </h2>
 
-    <div class="writing-card">
+    <div class="timeline">
 
-      <h3>
-        ERP systems still miss where real work happens
-      </h3>
+      <div class="timeline-item fade-up">
 
-      <p>
-        Most operational work still happens outside ERP systems —
-        email threads, supplier follow-ups, clarifications, spreadsheets,
-        calls, and manual coordination.
-      </p>
+        <div class="timeline-year">
+          2025 - Present
+        </div>
 
-    </div>
+        <div class="timeline-content">
+          <h3>QAD</h3>
 
-    <div class="writing-card">
+          <p>
+            Managing enterprise manufacturing and ERP accounts across global operations.
+            Working on modernization programs, customer recovery, governance alignment,
+            adoption, executive stakeholder management, and AI-enabled ERP transformation.
+          </p>
+        </div>
 
-      <h3>
-        Why vertical AI agents make more sense than horizontal AI
-      </h3>
+      </div>
 
-      <p>
-        ERP remains the system of record. Vertical AI agents sit closer
-        to workflows and execution.
-      </p>
+      <div class="timeline-item fade-up">
+
+        <div class="timeline-year">
+          2021 - 2025
+        </div>
+
+        <div class="timeline-content">
+          <h3>GoComet</h3>
+
+          <p>
+            Worked across enterprise logistics and supply chain SaaS.
+            Led customer success operations, onboarding, transformation programs,
+            retention, upsells, and implementation governance across global accounts.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="timeline-item fade-up">
+
+        <div class="timeline-year">
+          2015 - 2018
+        </div>
+
+        <div class="timeline-content">
+          <h3>Manufacturing & Operations</h3>
+
+          <p>
+            Started in operations and industrial engineering environments working on
+            process improvement, Lean systems, value stream mapping, AutoCAD, production,
+            and utility systems.
+          </p>
+        </div>
+
+      </div>
 
     </div>
 
   </section>
+
+  <section id="writing">
+
+    <div class="section-label">WRITING</div>
+
+    <h2 class="section-title fade-up">
+      Observations around ERP, AI, operations, and how work actually happens.
+    </h2>
+
+    <div class="writing-grid">
+
+      <div class="writing-card fade-up">
+        <h3>
+          ERP systems still miss where real work happens
+        </h3>
+
+        <p>
+          Most operational work still happens outside ERP systems - email threads,
+          supplier follow-ups, clarifications, spreadsheets, calls, and manual coordination.
+        </p>
+      </div>
+
+      <div class="writing-card fade-up">
+        <h3>
+          Why vertical AI agents make more sense operationally
+        </h3>
+
+        <p>
+          ERP remains the system of record. Vertical AI agents sit closer to workflows,
+          execution, coordination, and operational exceptions.
+        </p>
+      </div>
+
+      <div class="writing-card fade-up">
+        <h3>
+          Factory floor thinking changes how you see software
+        </h3>
+
+        <p>
+          Once you've seen operational friction physically, you stop treating software problems
+          as purely technical problems.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer id="contact">
+
+    <h2 class="fade-up">
+      chinmayraul.com
+    </h2>
+
+    <p class="fade-up">
+      Mumbai, India • ERP • Manufacturing • AI Workflows
+    </p>
+
+    <div class="hero-buttons" style="justify-content:center;">
+      <a class="btn btn-primary" href="mailto:raulchinmay@gmail.com">
+        Email
+      </a>
+
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/chinmayraul/" target="_blank">
+        LinkedIn
+      </a>
+    </div>
+
+  </footer>
+
+  <script>
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray('.fade-up').forEach((element) => {
+
+      gsap.to(element, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: element,
+          start: 'top 85%'
+        }
+      });
+
+    });
+
+    gsap.from('.hero-content', {
+      opacity: 0,
+      y: 50,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+
+    gsap.from('.hero-image', {
+      opacity: 0,
+      y: 50,
+      duration: 1.4,
+      ease: 'power3.out'
+    });
+
+  </script>
 
 </body>
 </html>
