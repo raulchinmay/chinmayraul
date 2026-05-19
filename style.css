@@ -36,8 +36,9 @@ nav{
   top:0;
   left:0;
   z-index:1000;
-  backdrop-filter:blur(20px);
-  background:rgba(0,0,0,0.2);
+  backdrop-filter:blur(14px);
+  background:rgba(0,0,0,0.18);
+  border-bottom:1px solid rgba(255,255,255,0.06);
 }
 
 .nav-inner{
@@ -62,6 +63,11 @@ nav{
 .nav-links a{
   text-decoration:none;
   color:#bbb;
+  transition:0.3s ease;
+}
+
+.nav-links a:hover{
+  color:white;
 }
 
 .hero{
@@ -76,26 +82,32 @@ nav{
   object-fit:cover;
   position:absolute;
   inset:0;
-  transform:scale(1.1);
+  transform:scale(1.08);
+  filter:brightness(0.65);
 }
 
 .hero-overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.25),
+      rgba(0,0,0,0.55)
+    );
   z-index:1;
 }
 
 .hero-content{
   position:relative;
   z-index:2;
-  max-width:1100px;
+  max-width:1200px;
   margin:auto;
   height:100%;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:0 40px;
+  padding:120px 60px;
 }
 
 .hero-label{
@@ -106,17 +118,19 @@ nav{
 }
 
 .hero-title{
-  font-size:clamp(60px,10vw,140px);
-  line-height:0.95;
-  max-width:1000px;
-  margin-bottom:30px;
+  font-size:clamp(70px,9vw,140px);
+  line-height:0.88;
+  max-width:1100px;
+  margin-bottom:40px;
+  font-weight:900;
+  letter-spacing:-4px;
 }
 
 .hero-description{
   font-size:24px;
   line-height:1.8;
-  max-width:800px;
-  color:#ddd;
+  max-width:760px;
+  color:rgba(255,255,255,0.82);
 }
 
 .story-section,
@@ -165,6 +179,11 @@ nav{
   max-width:850px;
 }
 
+.image-break{
+  position:relative;
+  overflow:hidden;
+}
+
 .image-break img{
   width:100%;
   height:100vh;
@@ -181,6 +200,7 @@ nav{
 .left-panel img{
   width:100%;
   border-radius:30px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.5);
 }
 
 .right-panel h2{
@@ -206,6 +226,7 @@ nav{
   padding:12px 20px;
   border-radius:999px;
   background:#121212;
+  border:1px solid rgba(255,255,255,0.08);
 }
 
 .saas-grid{
@@ -218,6 +239,12 @@ nav{
   background:#0d0d0d;
   border-radius:30px;
   overflow:hidden;
+  border:1px solid rgba(255,255,255,0.05);
+  transition:0.4s ease;
+}
+
+.saas-card:hover{
+  transform:translateY(-10px);
 }
 
 .saas-card img{
@@ -258,7 +285,7 @@ nav{
 .adventure-overlay{
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,0.5);
+  background:rgba(0,0,0,0.55);
 }
 
 .adventure-content{
@@ -338,17 +365,28 @@ footer p{
   transform:translateY(80px);
 }
 
+.fade-section{
+  opacity:0;
+  transform:translateY(80px);
+}
+
 @media(max-width:900px){
 
-  .nav-links{
-    display:none;
+  .hero-content{
+    padding:140px 30px 80px;
   }
 
-  .timeline-item,
-  .manufacturing-section,
-  .saas-grid{
-    grid-template-columns:1fr;
+  .hero-title{
+    font-size:64px;
+    line-height:0.95;
+    letter-spacing:-2px;
   }
+
+  .hero-description{
+    font-size:20px;
+  }
+
+}
 
   .hero-title,
   .adventure-content h2,
@@ -356,6 +394,13 @@ footer p{
   .timeline-content h2,
   footer h2{
     font-size:48px;
+  }
+
+  .hero-description,
+  .timeline-content p,
+  .right-panel p,
+  .adventure-content p{
+    font-size:18px;
   }
 
 }
