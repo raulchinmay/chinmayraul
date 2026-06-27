@@ -1,0 +1,320 @@
+/* ==========================================
+   RESET
+========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0F1115;
+    color: #F5F5F5;
+    line-height: 1.6;
+
+    background-image:
+        radial-gradient(circle at top left,#1A1A1A 0%,transparent 35%),
+        radial-gradient(circle at bottom right,#141414 0%,transparent 35%);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+::selection {
+    background: #fff;
+    color: #111;
+}
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+header{
+
+    width:min(1200px,90%);
+
+    margin:auto;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    top:50px;
+
+    background:none;
+
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+nav {
+    display: flex;
+    gap: 40px;
+}
+
+nav a {
+    position: relative;
+    transition: .3s;
+}
+nav a::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -6px;
+
+    width: 0;
+
+    height: 1px;
+
+    background: #fff;
+
+    transition: .3s;
+
+}
+
+nav a:hover::after {
+
+    width: 100%;
+
+}
+nav a:hover {
+    opacity: .75;
+}
+
+/* ==========================================
+   HERO
+========================================== */
+
+.hero {
+    width: min(1200px, 90%);
+    margin: 80px auto;
+    min-height: 85vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    align-items: center;
+}
+
+.hero-image {
+    border-radius: 30px;
+    border: 1px solid #222;
+    box-shadow: 0 20px 80px rgba(0, 0, 0, .35);
+    overflow: hidden;
+}
+
+.hero-image img {
+    height: 700px;
+    object-fit: cover;
+    transition: .6s;
+}
+
+.hero-image:hover img {
+    transform: scale(1.03);
+}
+
+.eyebrow {
+    font-size: 22px;
+    color: #9A9A9A;
+}
+
+h1 {
+    font-size: 90px;
+    line-height: 1;
+    margin: 15px 0 35px;
+}
+
+.intro {
+    font-size: 30px;
+    max-width: 650px;
+    line-height: 1.5;
+}
+
+.description {
+    margin-top: 35px;
+    font-size: 22px;
+    color: #B5B5B5;
+    max-width: 600px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 45px;
+    padding: 18px 34px;
+    border-radius: 999px;
+    border: 1px solid #444;
+    transition: .3s;
+}
+
+.button:hover {
+    background: #fff;
+    color: #111;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   CHAPTERS
+========================================== */
+
+.chapters {
+    width: min(1100px, 90%);
+    margin: 150px auto;
+}
+
+.section-title {
+    margin-bottom: 70px;
+}
+
+.section-title h2 {
+    font-size: 60px;
+}
+
+.section-title p {
+    color: #A5A5A5;
+    font-size: 22px;
+    margin-top: 10px;
+}
+
+.chapter {
+    display: grid;
+    grid-template-columns: 90px 1fr 40px;
+    gap: 35px;
+    align-items: center;
+    padding: 50px 0;
+    border-top: 1px solid #242424;
+    transition: .35s;
+}
+
+.chapter:last-child {
+    border-bottom: 1px solid #242424;
+}
+
+.chapter-number {
+    color: #555;
+    font-weight: 700;
+    transition: .3s;
+}
+.chapter:hover .chapter-content h3 {
+    color: #fff;
+}
+
+.chapter:hover .chapter-number {
+    color: #ffffff;
+    transform: translateX(6px);
+}
+
+.chapter-content h3 {
+    font-size: 38px;
+    margin-bottom: 12px;
+    transition: .3s;
+}
+
+.chapter-content p {
+    font-size: 21px;
+    color: #B5B5B5;
+    margin-bottom: 12px;
+}
+
+.chapter-content span {
+    color: #666;
+}
+
+.arrow {
+    font-size: 32px;
+    color: #666;
+    transition: .35s;
+}
+
+.chapter:hover .arrow {
+    transform: translateX(10px);
+    color: #fff;
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+footer {
+    text-align: center;
+    padding: 80px;
+    color: #666;
+}
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:900px){
+
+    header{
+
+        height:auto;
+        padding:25px 0;
+        flex-direction:column;
+        gap:20px;
+
+    }
+
+    .hero{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .hero-image img{
+
+        height:500px;
+
+    }
+
+    h1{
+
+        font-size:58px;
+
+    }
+
+    .intro{
+
+        font-size:24px;
+
+    }
+
+    .chapter{
+
+        grid-template-columns:70px 1fr;
+
+    }
+
+    .arrow{
+
+        display:none;
+
+    }
+
+}
