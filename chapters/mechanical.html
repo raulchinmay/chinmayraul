@@ -1,243 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Mechanical Engineering | Chinmay Raul</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-
-    background:#090909;
-    color:#ffffff;
-
-    font-family:Inter,sans-serif;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    min-height:100vh;
-
-    overflow:hidden;
-
-}
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    width:600px;
-    height:600px;
-
-    left:-200px;
-    top:-200px;
-
-    background:radial-gradient(circle,#b67b1525 0%,transparent 70%);
-
-}
-
-.container{
-
-    width:100%;
-    max-width:620px;
-
-    position:relative;
-    z-index:5;
-
-}
-
-.small{
-
-    color:#888;
-
-    font-size:15px;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-
-}
-
-h1{
-
-    margin-top:15px;
-
-    font-size:48px;
-
-    line-height:1.15;
-
-}
-
-.description{
-
-    margin-top:25px;
-
-    color:#b9b9b9;
-
-    font-size:20px;
-
-    line-height:1.8;
-
-}
-
-.terminal{
-
-    margin-top:45px;
-
-    background:#121212;
-
-    border:1px solid #242424;
-
-    border-radius:14px;
-
-    padding:28px;
-
-    font-family:"JetBrains Mono", monospace;
-
-    font-size:16px;
-
-    line-height:2;
-
-}
-
-.yellow{
-
-    color:#f0b63c;
-
-}
-
-.green{
-
-    color:#72db7d;
-
-}
-
-.blue{
-
-    color:#63b6ff;
-
-}
-
-.progress{
-
-    color:white;
-
-    letter-spacing:2px;
-
-}
-
-.back{
-
-    display:inline-block;
-
-    margin-top:45px;
-
-    color:#999;
-
-    transition:.3s;
-
-}
-
-.back:hover{
-
-    color:white;
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanical Engineering | Chinmay Raul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: radial-gradient(ellipse at top left, #261c0d, transparent 30rem), #090909;
+            color: #c5c5c5;
+            font: 400 1.0625rem/1.8 Inter, sans-serif;
+        }
+        main {
+            max-width: 46rem;
+            margin: 0 auto;
+            padding: clamp(2rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3rem);
+        }
+        header { margin-bottom: 2rem; }
+        h1, h2 { color: #fff; line-height: 1.2; }
+        h1 { margin: .5rem 0; font-size: clamp(2rem, 6vw, 3rem); }
+        h2 { margin: 0 0 .5rem; font-size: clamp(1.25rem, 4vw, 1.5rem); }
+        p { margin: 0 0 1rem; }
+        section { margin-top: 2.5rem; }
+        .chapter-label {
+            color: #f0b63c;
+            font-size: .8125rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+        .metadata { color: #aaa; font-size: .9375rem; }
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+        }
+        a { color: #eee; text-underline-offset: .25em; }
+        a:hover, a:focus-visible { color: #f0b63c; }
+    </style>
 </head>
-
 <body>
+    <main>
+        <article>
+            <header>
+                <p class="chapter-label">Chapter 01</p>
+                <h1>Mechanical Engineering</h1>
+                <p class="metadata">MET, Nashik | Class of 2015</p>
+            </header>
 
-<div class="container">
+            <p>I studied Mechanical Engineering at MET, Nashik, graduating in 2015.</p>
+            <p>Those four years exposed me to quite a few things, from engineering drawings and workshops to robotics, manufacturing processes and industrial systems. There was a lot of theory, of course, but I was always more interested in seeing how things actually worked.</p>
+            <p>I enjoyed working with machines, understanding mechanisms and figuring out why something wasn't behaving the way it was supposed to.</p>
+            <p>Looking back, some of my most memorable experiences happened outside regular lectures.</p>
 
-<div class="small">
+            <section>
+                <h2>Robotics, Projects &amp; Competitions</h2>
+                <p>Robotics was one of the areas I explored during engineering.</p>
+                <p>I participated in technical competitions, including ROBOTHON, where I won a robotics race competition. It was an opportunity to work with mechanical systems beyond what we were studying in classrooms.</p>
+                <p>Those projects also exposed me to the practical side of engineering, where designing something and getting it to work are two different experiences.</p>
+            </section>
 
-CHAPTER 01
+            <section>
+                <h2>Bhabha Atomic Research Centre</h2>
+                <p class="metadata">Tarapur | 2013</p>
+                <p>During my engineering years, I had an opportunity to undergo training at the Bhabha Atomic Research Centre (BARC), Tarapur, in the PREFRE division (Processing and Fabrication of Reactor Materials).</p>
+                <p>My work involved studying industrial utility systems, particularly boilers and cooling systems, and understanding their operating principles and efficiency.</p>
+                <p>It was an early exposure to engineering at an industrial scale, where equipment reliability, operating conditions and processes had practical significance.</p>
+            </section>
 
-</div>
+            <section>
+                <h2>Bosch India</h2>
+                <p class="metadata">Nashik | 2014-2015</p>
+                <p>I subsequently completed my engineering training at Bosch, Nashik.</p>
+                <p>My work involved studying industrial utility systems, including boilers, chillers and cooling systems, assessing their efficiency and preparing technical reports.</p>
+                <p>It gave me further exposure to how engineering systems operate within a large manufacturing environment.</p>
+            </section>
 
-<h1>
+            <section>
+                <h2>Beyond Academics</h2>
+                <p>College wasn't entirely about engineering.</p>
+                <p>I was also involved in technical events, quizzes and sports. Those experiences were another part of my time at MET, alongside the practical work and academic requirements.</p>
+            </section>
 
-Mechanical Engineering
+            <section>
+                <h2>Moving Into Manufacturing</h2>
+                <p>I graduated in 2015 and began my professional career in manufacturing.</p>
+                <p>My first role was at Bharat Flooring &amp; Tiles, where I became involved in production processes, quality systems and operational improvements.</p>
+                <p>The transition from studying manufacturing to working in an actual production environment gave me a much closer view of what happens on a factory floor.</p>
+                <p>That became the next chapter of my career.</p>
+            </section>
+        </article>
 
-</h1>
-
-<p class="description">
-
-This chapter is still being machined.
-
-Somewhere between workshop notebooks, CAD files and "final_final_v7.dwg".
-
-</p>
-
-<div class="terminal">
-
-<div>
-
-<span class="yellow">></span>
-
-boot mechanical-engineering
-
-</div>
-
-<div>
-
-<span class="green">✓</span>
-
-Initializing curiosity...
-
-</div>
-
-<div>
-
-<span class="green">✓</span>
-
-Loading engineering memories...
-
-</div>
-
-<div class="progress">
-
-████████░░░ 84%
-
-</div>
-
-<div>
-
-<span class="blue">→</span>
-
-Recovering internships, projects and several all-nighters...
-
-</div>
- </div>
-
-    <a href="../index.html#chapters" class="back">
-
-        ← Back to Chapters
-
-    </a>
-
-</div>
+        <nav aria-label="Chapter navigation">
+            <a href="../index.html#chapters">Back to Chapters</a>
+            <a href="factory-floors.html">Next chapter: Factory Floors</a>
+        </nav>
+    </main>
 </body>
-
 </html>
